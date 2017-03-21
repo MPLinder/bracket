@@ -15,10 +15,10 @@ func main () {
 		os.Exit(1)
 	}
 
-	var field Group
-	json.Unmarshal(groupData, &field)
+	var group Group
+	json.Unmarshal(groupData, &group)
 
-	var bracket = NewBracket(field.Field)
+	var bracket = NewBracket(group.Field)
 	bracket.PrettyPrint(os.Stdout, "\t\t\t")
 }
 
