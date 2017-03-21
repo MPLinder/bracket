@@ -3,9 +3,32 @@ package main
 import (
 	"strconv"
 	"io"
+	"sort"
 )
 
-func NewBracket(teams []Team) Bracket {
+var bracket_order = map[int]int {
+	1: 0,
+	16: 1,
+	8: 2,
+	9: 3,
+	5: 4,
+	12: 5,
+	4: 6,
+	13: 7,
+	6: 8,
+	11: 9,
+	3: 10,
+	14: 11,
+	7: 12,
+	10: 13,
+	2: 14,
+	15: 15,
+}
+
+func NewRegion(region Region) Bracket {
+	sort.Slice(region.Teams, func(i, j int) bool {return bracket_order[region.Teams[i].Seed] < bracket_order[region.Teams[j].Seed]})
+
+	var teams = region.Teams
 	var leaves []Bracket
 
 	for _, team := range teams {
@@ -16,6 +39,21 @@ func NewBracket(teams []Team) Bracket {
 	var seed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1])}
 
 	return construct([]Bracket{seed}, leaves[2:])
+}
+
+func NewBracket(field Field) Bracket {
+	sort.Slice(field.Regions, func(i, j int) bool {return bracket_order[field.Regions[i].Seed] < bracket_order[field.Regions[j].Seed]})
+
+	var regions []Bracket
+
+	for _, reg := range field.Regions {
+		var b = NewRegion(reg)
+		regions = append(regions, b)
+	}
+
+	var seed = Bracket{left: &regions[0], right: &regions[1], value: winner(regions[0], regions[1])}
+
+	return construct([]Bracket{seed}, regions[2:])
 }
 
 type Bracket struct {
@@ -36,7 +74,7 @@ func (b *Bracket) String() string {
 	var name string
 	if b.value.Name != "" {
 		var prefix string
-		if (b.value.Eliminated != "") {
+		if (b.value.EliminatedBy != "") {
 			prefix = "(X)"
 		} else {
 			prefix = ""
@@ -48,7 +86,7 @@ func (b *Bracket) String() string {
 	return name
 }
 
-func (t *Bracket) PrettyPrint(w io.Writer, prefix string) {
+func (b *Bracket) PrettyPrint(w io.Writer, prefix string) {
 	var inner func(int, *Bracket)
 	inner = func(depth int, child *Bracket) {
 		if (child.left != nil) {
@@ -63,7 +101,7 @@ func (t *Bracket) PrettyPrint(w io.Writer, prefix string) {
 			inner(depth - 1, child.right)
 		}
 	}
-	inner(4, t)
+	inner(b.Depth() - 1, b)
 }
 
 func (b *Bracket) Leaves () []Team {
@@ -103,9 +141,9 @@ func construct(parents []Bracket, leaves []Bracket) Bracket {
 func winner(left Bracket, right Bracket) Team {
 	var winner = Team{}
 
-	if left.value.Eliminated == right.value.Name {
+	if left.value.EliminatedBy == right.value.Name {
 		winner = right.value
-	} else if right.value.Eliminated == left.value.Name {
+	} else if right.value.EliminatedBy == left.value.Name {
 		winner = left.value
 	}
 
