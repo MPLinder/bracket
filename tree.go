@@ -25,7 +25,7 @@ var bracket_order = map[int]int {
 	15: 15,
 }
 
-func NewRegion(region Region) Bracket {
+func NewRegion(region Region, picks Picks) Bracket {
 	sort.Slice(region.Teams, func(i, j int) bool {return bracket_order[region.Teams[i].Seed] < bracket_order[region.Teams[j].Seed]})
 
 	var teams = region.Teams
@@ -36,24 +36,24 @@ func NewRegion(region Region) Bracket {
 		leaves = append(leaves, leaf)
 	}
 
-	var seed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1])}
+	var seed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 
-	return construct([]Bracket{seed}, leaves[2:])
+	return construct([]Bracket{seed}, leaves[2:], picks)
 }
 
-func NewBracket(field Field) Bracket {
+func NewBracket(field Field, picks Picks) Bracket {
 	sort.Slice(field.Regions, func(i, j int) bool {return bracket_order[field.Regions[i].Seed] < bracket_order[field.Regions[j].Seed]})
 
 	var regions []Bracket
 
 	for _, reg := range field.Regions {
-		var b = NewRegion(reg)
+		var b = NewRegion(reg, picks)
 		regions = append(regions, b)
 	}
 
-	var seed = Bracket{left: &regions[0], right: &regions[1], value: winner(regions[0], regions[1])}
+	var seed = Bracket{left: &regions[0], right: &regions[1], value: winner(regions[0], regions[1], picks)}
 
-	return construct([]Bracket{seed}, regions[2:])
+	return construct([]Bracket{seed}, regions[2:], picks)
 }
 
 type Bracket struct {
@@ -73,13 +73,7 @@ func (b *Bracket) Depth() int {
 func (b *Bracket) String() string {
 	var name string
 	if b.value.Name != "" {
-		var prefix string
-		if (b.value.EliminatedBy != "") {
-			prefix = "(X)"
-		} else {
-			prefix = ""
-		}
-		name = prefix + strconv.Itoa(b.value.Seed) + " " + b.value.Name
+		name = strconv.Itoa(b.value.Seed) + " " + b.value.Name
 	} else {
 		name = "________"
 	}
@@ -116,34 +110,34 @@ func (b *Bracket) Leaves () []Team {
 	return result
 }
 
-func construct(parents []Bracket, leaves []Bracket) Bracket {
+func construct(parents []Bracket, leaves []Bracket, picks Picks) Bracket {
 
 	if (len(leaves) >= 2) {
-		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1])}
+		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
-		var bracket = construct(parents, leaves[2:])
+		var bracket = construct(parents, leaves[2:], picks)
 		return bracket
 	} else if (len(leaves) == 2) {
-		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1])}
+		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
-		return construct(parents, []Bracket{})
+		return construct(parents, []Bracket{}, picks)
 	} else {
 		if (len(parents) > 1) {
-			var newSeed = Bracket{left: &parents[0], right: &parents[1], value: winner(parents[0], parents[1])}
-			return construct([]Bracket{newSeed}, parents[2:])
+			var newSeed = Bracket{left: &parents[0], right: &parents[1], value: winner(parents[0], parents[1], picks)}
+			return construct([]Bracket{newSeed}, parents[2:], picks)
 		}
 		return parents[0]
 	}
 }
 
-func winner(left Bracket, right Bracket) Team {
+func winner(left Bracket, right Bracket, picks Picks) Team {
 	var winner = Team{}
 
-	if left.value.EliminatedBy == right.value.Name {
+	if picks[left.value.Name] == right.value.Name {
 		winner = right.value
-	} else if right.value.EliminatedBy == left.value.Name {
+	} else if picks[right.value.Name] == left.value.Name {
 		winner = left.value
 	}
 
