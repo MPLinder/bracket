@@ -1,32 +1,38 @@
 package main
 
 import (
-	"strconv"
 	"io"
 	"sort"
+	"strconv"
 )
 
-var bracket_order = map[int]int {
-	1: 0,
+var bracket_order = map[int]int{
+	1:  0,
 	16: 1,
-	8: 2,
-	9: 3,
-	5: 4,
+	8:  2,
+	9:  3,
+	5:  4,
 	12: 5,
-	4: 6,
+	4:  6,
 	13: 7,
-	6: 8,
+	6:  8,
 	11: 9,
-	3: 10,
+	3:  10,
 	14: 11,
-	7: 12,
+	7:  12,
 	10: 13,
-	2: 14,
+	2:  14,
 	15: 15,
 }
 
+type Bracket struct {
+	value Team
+	left  *Bracket
+	right *Bracket
+}
+
 func NewRegion(region Region, picks Picks) Bracket {
-	sort.Slice(region.Teams, func(i, j int) bool {return bracket_order[region.Teams[i].Seed] < bracket_order[region.Teams[j].Seed]})
+	sort.Slice(region.Teams, func(i, j int) bool { return bracket_order[region.Teams[i].Seed] < bracket_order[region.Teams[j].Seed] })
 
 	var teams = region.Teams
 	var leaves []Bracket
@@ -42,7 +48,9 @@ func NewRegion(region Region, picks Picks) Bracket {
 }
 
 func NewBracket(field Field, picks Picks) Bracket {
-	sort.Slice(field.Regions, func(i, j int) bool {return bracket_order[field.Regions[i].Seed] < bracket_order[field.Regions[j].Seed]})
+	sort.Slice(field.Regions, func(i, j int) bool {
+		return bracket_order[field.Regions[i].Seed] < bracket_order[field.Regions[j].Seed]
+	})
 
 	var regions []Bracket
 
@@ -56,18 +64,24 @@ func NewBracket(field Field, picks Picks) Bracket {
 	return construct([]Bracket{seed}, regions[2:], picks)
 }
 
-type Bracket struct {
-	value Team
-	left  *Bracket
-	right *Bracket
-}
-
 func (b *Bracket) Depth() int {
-	if (b.left == nil) {
+	if b.left == nil {
 		return 1
 	} else {
 		return b.left.Depth() + 1
 	}
+}
+
+func (b *Bracket) Leaves() []Team {
+	var result []Team
+	if (b.left.value == Team{}) {
+		result = b.left.Leaves()
+		result = append(result, b.right.Leaves()...)
+	} else {
+		return []Team{b.left.value, b.right.value}
+	}
+
+	return result
 }
 
 func (b *Bracket) String() string {
@@ -83,48 +97,36 @@ func (b *Bracket) String() string {
 func (b *Bracket) PrettyPrint(w io.Writer, prefix string) {
 	var inner func(int, *Bracket)
 	inner = func(depth int, child *Bracket) {
-		if (child.left != nil) {
-			inner(depth - 1, child.left)
+		if child.left != nil {
+			inner(depth-1, child.left)
 		}
 		for i := 0; i < depth; i++ {
 			io.WriteString(w, prefix)
 		}
 		io.WriteString(w, child.String()+"\n")
 
-		if (child.right != nil) {
-			inner(depth - 1, child.right)
+		if child.right != nil {
+			inner(depth-1, child.right)
 		}
 	}
-	inner(b.Depth() - 1, b)
-}
-
-func (b *Bracket) Leaves () []Team {
-	var result []Team
-	if (b.left.value == Team{}) {
-		result = b.left.Leaves()
-		result = append(result, b.right.Leaves()...)
-	} else {
-		return []Team{b.left.value, b.right.value}
-	}
-
-	return result
+	inner(b.Depth()-1, b)
 }
 
 func construct(parents []Bracket, leaves []Bracket, picks Picks) Bracket {
 
-	if (len(leaves) >= 2) {
+	if len(leaves) >= 2 {
 		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
 		var bracket = construct(parents, leaves[2:], picks)
 		return bracket
-	} else if (len(leaves) == 2) {
+	} else if len(leaves) == 2 {
 		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
 		return construct(parents, []Bracket{}, picks)
 	} else {
-		if (len(parents) > 1) {
+		if len(parents) > 1 {
 			var newSeed = Bracket{left: &parents[0], right: &parents[1], value: winner(parents[0], parents[1], picks)}
 			return construct([]Bracket{newSeed}, parents[2:], picks)
 		}

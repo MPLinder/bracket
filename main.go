@@ -1,13 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
-	"encoding/json"
 )
 
-func main () {
+func main() {
 	groupData, err := ioutil.ReadFile("./group.json")
 	if err != nil {
 		fmt.Printf("File error: %v\n", err)
@@ -28,14 +28,14 @@ func main () {
 }
 
 type Team struct {
-	Name         string `json:"name"`
-	Region       string `json:"region"`
-	Seed         int `json:"seed"`
+	Name   string `json:"name"`
+	Region string `json:"region"`
+	Seed   int    `json:"seed"`
 }
 
 type Region struct {
-	Name string `json:"name"`
-	Seed int `json:"seed"`
+	Name  string `json:"name"`
+	Seed  int    `json:"seed"`
 	Teams []Team `json:"teams"`
 }
 
@@ -44,14 +44,14 @@ type Field struct {
 }
 
 type Player struct {
-	Name string `json:"name"`
-	Picks Picks `json:"picks"`
+	Name    string `json:"name"`
+	Picks   Picks  `json:"picks"`
 	Bracket Bracket
 }
 
 type Picks map[string]string
 
 type Group struct {
-	Field Field `json:"field"`
+	Field   Field    `json:"field"`
 	Players []Player `json:"players"`
 }
