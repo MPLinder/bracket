@@ -17,19 +17,28 @@ func main() {
 	json.Unmarshal(groupData, &group)
 
 	var actual Bracket
+	var actualCopy Bracket
 
 	// TODO: goroutines here
 	for _, player := range group.Players {
 		player.Bracket = NewBracket(group.Field, player.Picks)
 		if player.Name == "Actual" {
 			actual = player.Bracket
+			actualCopy = *actual.Copy()
 		}
 		if player.Name == "Linder" {
 			fmt.Printf("\n\n\n %s's Bracket \n\n\n", player.Name)
 			player.Bracket.PrettyPrint(os.Stdout, "\t\t\t")
-			fmt.Println(player.Bracket.Points(actual, group.Rounds))
 		}
 	}
+
+	fmt.Printf("\n\n\n Actual Bracket \n\n\n")
+	actual.PrettyPrint(os.Stdout, "\t\t\t")
+
+	fmt.Printf("\n\n\n Actual filled with linder's picks Bracket \n\n\n")
+	actualCopy.PrettyPrint(os.Stdout, "\t\t\t")
+
+	fmt.Println(actualCopy.Points(actual, group.Rounds))
 }
 
 type Group struct {

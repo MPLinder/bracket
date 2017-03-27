@@ -44,7 +44,7 @@ func NewRegion(region Region, picks Picks) Bracket {
 
 	var seed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 
-	return construct([]Bracket{seed}, leaves[2:], picks)
+	return constructFromSlice([]Bracket{seed}, leaves[2:], picks)
 }
 
 func NewBracket(field Field, picks Picks) Bracket {
@@ -61,7 +61,17 @@ func NewBracket(field Field, picks Picks) Bracket {
 
 	var seed = Bracket{left: &regions[0], right: &regions[1], value: winner(regions[0], regions[1], picks)}
 
-	return construct([]Bracket{seed}, regions[2:], picks)
+	return constructFromSlice([]Bracket{seed}, regions[2:], picks)
+}
+
+func (b *Bracket) Copy() *Bracket {
+	var ret = Bracket{value: b.value}
+	if b.left == nil {
+		return &ret
+	}
+	ret.left = b.left.Copy()
+	ret.right = b.right.Copy()
+	return &ret
 }
 
 func (b *Bracket) Depth() int {
@@ -136,23 +146,23 @@ func gamePoints(bracket Bracket, actual Bracket, round Round) int {
 	return round.Points + adder
 }
 
-func construct(parents []Bracket, leaves []Bracket, picks Picks) Bracket {
+func constructFromSlice(parents []Bracket, leaves []Bracket, picks Picks) Bracket {
 
 	if len(leaves) >= 2 {
 		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
-		var bracket = construct(parents, leaves[2:], picks)
+		var bracket = constructFromSlice(parents, leaves[2:], picks)
 		return bracket
 	} else if len(leaves) == 2 {
 		var newSeed = Bracket{left: &leaves[0], right: &leaves[1], value: winner(leaves[0], leaves[1], picks)}
 		parents = append(parents, newSeed)
 
-		return construct(parents, []Bracket{}, picks)
+		return constructFromSlice(parents, []Bracket{}, picks)
 	} else {
 		if len(parents) > 1 {
 			var newSeed = Bracket{left: &parents[0], right: &parents[1], value: winner(parents[0], parents[1], picks)}
-			return construct([]Bracket{newSeed}, parents[2:], picks)
+			return constructFromSlice([]Bracket{newSeed}, parents[2:], picks)
 		}
 		return parents[0]
 	}
