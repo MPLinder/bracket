@@ -13,18 +13,29 @@ func main() {
 		fmt.Printf("File error: %v\n", err)
 		os.Exit(1)
 	}
-
 	var group Group
 	json.Unmarshal(groupData, &group)
 
+	var actual Bracket
+
+	// TODO: goroutines here
 	for _, player := range group.Players {
 		player.Bracket = NewBracket(group.Field, player.Picks)
+		if player.Name == "Actual" {
+			actual = player.Bracket
+		}
 		if player.Name == "Linder" {
 			fmt.Printf("\n\n\n %s's Bracket \n\n\n", player.Name)
 			player.Bracket.PrettyPrint(os.Stdout, "\t\t\t")
-
+			fmt.Println(player.Bracket.Points(actual, group.Rounds))
 		}
 	}
+}
+
+type Group struct {
+	Field   Field    `json:"field"`
+	Players []Player `json:"players"`
+	Rounds  Rounds   `json:"rounds"`
 }
 
 type Team struct {
@@ -51,7 +62,10 @@ type Player struct {
 
 type Picks map[string]string
 
-type Group struct {
-	Field   Field    `json:"field"`
-	Players []Player `json:"players"`
+type Rounds map[int]Round
+
+type Round struct {
+	Name    string `json:"name"`
+	Points  int    `json:"points"`
+	AddSeed bool   `json:"add_seed"`
 }

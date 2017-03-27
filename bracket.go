@@ -72,6 +72,12 @@ func (b *Bracket) Depth() int {
 	}
 }
 
+// Round returns the integer value of the round in which a Bracket takes place
+// assuming a 64 team field
+func (b *Bracket) Round() int {
+	return b.Depth() - 1
+}
+
 func (b *Bracket) Leaves() []Team {
 	var result []Team
 	if (b.left.value == Team{}) {
@@ -110,6 +116,24 @@ func (b *Bracket) PrettyPrint(w io.Writer, prefix string) {
 		}
 	}
 	inner(b.Depth()-1, b)
+}
+
+func (b *Bracket) Points(actual Bracket, rounds Rounds) int {
+	if b.Round() == 0 {
+		return 0
+	}
+	return gamePoints(*b, actual, rounds[b.Round()]) + b.left.Points(*actual.left, rounds) + b.right.Points(*actual.right, rounds)
+}
+
+func gamePoints(bracket Bracket, actual Bracket, round Round) int {
+	if (actual.value == Team{} || actual.value != bracket.value) {
+		return 0
+	}
+	var adder = 0
+	if round.AddSeed {
+		adder = bracket.value.Seed
+	}
+	return round.Points + adder
 }
 
 func construct(parents []Bracket, leaves []Bracket, picks Picks) Bracket {
