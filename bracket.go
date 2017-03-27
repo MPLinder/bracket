@@ -82,6 +82,25 @@ func (b *Bracket) Depth() int {
 	}
 }
 
+//func (b *Bracket) FillFromPlayer(player Player) {
+//	if b.left == nil {
+//		return
+//	}
+//
+//	if (b.left.value == Team{}) {
+//		b.left.FillFromPlayer(player)
+//	}
+//
+//	if (b.right.value == Team{}) {
+//		b.right.FillFromPlayer(player)
+//	}
+//
+//	var team Team
+//	if
+//
+//	b.value = winner(*b.left, *b.right, player.Picks)
+//}
+
 // Round returns the integer value of the round in which a Bracket takes place
 // assuming a 64 team field
 func (b *Bracket) Round() int {
@@ -171,10 +190,10 @@ func constructFromSlice(parents []Bracket, leaves []Bracket, picks Picks) Bracke
 func winner(left Bracket, right Bracket, picks Picks) Team {
 	var winner = Team{}
 
-	if picks[left.value.Name] == right.value.Name {
-		winner = right.value
-	} else if picks[right.value.Name] == left.value.Name {
+	if picks[left.value.Name] > picks[right.value.Name] {
 		winner = left.value
+	} else if picks[right.value.Name] > picks[left.value.Name] {
+		winner = right.value
 	}
 
 	return winner
