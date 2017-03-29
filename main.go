@@ -17,6 +17,7 @@ func main() {
 	json.Unmarshal(groupData, &group)
 
 	var actual Bracket
+	var linder Bracket
 
 	// TODO: goroutines here
 	for _, player := range group.Players {
@@ -25,14 +26,18 @@ func main() {
 			actual = player.Bracket
 		}
 		if player.Name == "Linder" {
-			fmt.Printf("\n\n\n %s's Bracket \n\n\n", player.Name)
-			player.Bracket.PrettyPrint(os.Stdout, "\t\t\t")
-			fmt.Printf("Points earned: %d", player.Bracket.Points(actual, group.Rounds))
+			linder = player.Bracket
 		}
 	}
-	//actual.PrettyPrint(os.Stdout, "\t\t\t")
-	// TODO: take actualCopy, fill with a permutation, then calculate player points as if that were actual
 
+	var allPossiblePicks = actual.AllPossiblePicks()
+
+	var possible Bracket
+	for _, picks := range allPossiblePicks {
+		possible = *actual.Copy()
+		possible.FillFromPicks(picks)
+		fmt.Println(linder.Points(possible, group.Rounds))
+	}
 }
 
 type Group struct {
@@ -65,6 +70,14 @@ type Player struct {
 
 // Picks is a mapping of team name to the integer round in which you expect them to be eliminated.
 type Picks map[string]int
+
+func (p *Picks) Copy() Picks {
+	var newPicks = make(Picks)
+	for k, v := range *p {
+		newPicks[k] = v
+	}
+	return newPicks
+}
 
 type Rounds map[int]Round
 

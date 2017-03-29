@@ -82,24 +82,31 @@ func (b *Bracket) Depth() int {
 	}
 }
 
-//func (b *Bracket) FillFromPlayer(player Player) {
-//	if b.left == nil {
-//		return
-//	}
-//
-//	if (b.left.value == Team{}) {
-//		b.left.FillFromPlayer(player)
-//	}
-//
-//	if (b.right.value == Team{}) {
-//		b.right.FillFromPlayer(player)
-//	}
-//
-//	var team Team
-//	if
-//
-//	b.value = winner(*b.left, *b.right, player.Picks)
-//}
+func (b *Bracket) FillFromPicks(picks Picks) {
+	if b.left == nil {
+		return
+	}
+
+	if b.left.value == (Team{}) {
+		b.left.FillFromPicks(picks)
+	}
+
+	if b.right.value == (Team{}) {
+		b.right.FillFromPicks(picks)
+	}
+
+	b.value = winner(*b.left, *b.right, picks)
+}
+
+func (b *Bracket) AllPossiblePicks() []Picks {
+	var ret []Picks
+	var picks = make(Picks)
+
+	ret = append(ret, picks)
+
+	allPossiblePicksHelper(*b, &ret)
+	return ret
+}
 
 // Round returns the integer value of the round in which a Bracket takes place
 // assuming a 64 team field
@@ -109,7 +116,7 @@ func (b *Bracket) Round() int {
 
 func (b *Bracket) Leaves() []Team {
 	var result []Team
-	if (b.left.value == Team{}) {
+	if b.left.value == (Team{}) {
 		result = b.left.Leaves()
 		result = append(result, b.right.Leaves()...)
 	} else {
@@ -155,7 +162,7 @@ func (b *Bracket) Points(actual Bracket, rounds Rounds) int {
 }
 
 func gamePoints(bracket Bracket, actual Bracket, round Round) int {
-	if (actual.value == Team{} || actual.value != bracket.value) {
+	if actual.value == (Team{}) || actual.value != bracket.value {
 		return 0
 	}
 	var adder = 0
@@ -197,4 +204,37 @@ func winner(left Bracket, right Bracket, picks Picks) Team {
 	}
 
 	return winner
+}
+
+func allPossiblePicksHelper(bracket Bracket, picksSlice *[]Picks) {
+
+	if bracket.value != (Team{}) {
+		return
+	}
+
+	if bracket.left.value != (Team{}) && bracket.right.value != (Team{}) {
+		var newPicks Picks
+		var newPicksSlice []Picks
+
+		// For each Picks in the slice of Picks, copy it and one team winning to the original and a different team winning to the copy
+		// then append them back together
+		for _, p := range *picksSlice {
+			newPicks = p.Copy()
+
+			p[bracket.left.value.Name] = bracket.Round()
+			p[bracket.right.value.Name] = bracket.Round() + 1
+
+			newPicks[bracket.left.value.Name] = bracket.Round() + 1
+			newPicks[bracket.right.value.Name] = bracket.Round()
+
+			newPicksSlice = append(newPicksSlice, newPicks)
+		}
+
+		*picksSlice = append(*picksSlice, newPicksSlice...)
+	}
+
+	allPossiblePicksHelper(*bracket.left, picksSlice)
+	allPossiblePicksHelper(*bracket.right, picksSlice)
+
+	return
 }
