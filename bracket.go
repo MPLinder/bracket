@@ -161,6 +161,38 @@ func (b *Bracket) Points(actual Bracket, rounds Rounds) int {
 	return gamePoints(*b, actual, rounds[b.Round()]) + b.left.Points(*actual.left, rounds) + b.right.Points(*actual.right, rounds)
 }
 
+func (b *Bracket) RecentWinners() []Team {
+	var recentWinners []Team
+	recentWinnersHelper(b, &recentWinners)
+	return recentWinners
+}
+
+func (b *Bracket) RoundWinners(round int) []Team {
+	var roundWinners []Team
+	roundWinnersHelper(b, round, &roundWinners)
+	return roundWinners
+}
+
+func recentWinnersHelper(b *Bracket, rw *[]Team) {
+	if b.value == (Team{}) {
+		recentWinnersHelper(b.left, rw)
+		recentWinnersHelper(b.right, rw)
+	} else {
+		*rw = append(*rw, b.value)
+	}
+	return
+}
+
+func roundWinnersHelper(b *Bracket, round int, rw *[]Team) {
+	if b.Round() > round {
+		roundWinnersHelper(b.left, round, rw)
+		roundWinnersHelper(b.right, round, rw)
+	} else {
+		*rw = append(*rw, b.value)
+	}
+	return
+}
+
 func gamePoints(bracket Bracket, actual Bracket, round Round) int {
 	if actual.value == (Team{}) || actual.value != bracket.value {
 		return 0

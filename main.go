@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sort"
 )
 
 func main() {
@@ -16,33 +17,54 @@ func main() {
 	var group Group
 	json.Unmarshal(groupData, &group)
 
-	var actual Bracket
-	var linder Bracket
+	var actual Player
+	actual.Bracket = NewBracket(group.Field, group.Actual.Picks)
 
 	// TODO: goroutines here
-	for _, player := range group.Players {
-		player.Bracket = NewBracket(group.Field, player.Picks)
-		if player.Name == "Actual" {
-			actual = player.Bracket
-		}
-		if player.Name == "Linder" {
-			linder = player.Bracket
-		}
+	for i := range group.Players {
+		group.Players[i].Bracket = NewBracket(group.Field, group.Players[i].Picks)
 	}
 
-	var allPossiblePicks = actual.AllPossiblePicks()
+	sort.Slice(group.Players, func(i, j int) bool {
+		return group.Players[i].Bracket.Points(actual.Bracket, group.Rounds) > group.Players[j].Bracket.Points(actual.Bracket, group.Rounds)
+	})
+
+	fmt.Println("Current Points:")
+	for _, player := range group.Players {
+		fmt.Printf("\t %s: %d\n", player.Name, player.Bracket.Points(actual.Bracket, group.Rounds))
+	}
+
+	var allPossiblePicks = actual.Bracket.AllPossiblePicks()
+	var allPossibleBrackets = make(map[Bracket][]Player)
 
 	var possible Bracket
 	for _, picks := range allPossiblePicks {
-		possible = *actual.Copy()
+		possible = *actual.Bracket.Copy()
 		possible.FillFromPicks(picks)
-		fmt.Println(linder.Points(possible, group.Rounds))
+		//allPossibleBrackets[possible] = make(map[string]int)
+		//fmt.Printf("Winners: %v\n", possible.RoundWinners(possible.Round()-1))
+		for _, player := range group.Players {
+			//fmt.Printf("\t%s: %d\n", player.Name, player.Bracket.Points(possible, group.Rounds))
+			allPossibleBrackets[possible] = append(allPossibleBrackets[possible], player)
+		}
+	}
+
+	for bracket, players := range allPossibleBrackets {
+		fmt.Printf("Winners: %v\n", bracket.RecentWinners())
+		sort.Slice(players, func(i, j int) bool {
+			return players[i].Bracket.Points(bracket, group.Rounds) > players[j].Bracket.Points(bracket, group.Rounds)
+		})
+
+		for _, p := range players {
+			fmt.Printf("\t%s: %d\n", p.Name, p.Bracket.Points(bracket, group.Rounds))
+		}
 	}
 }
 
 type Group struct {
 	Field   Field    `json:"field"`
 	Players []Player `json:"players"`
+	Actual  Player   `json:"actual"`
 	Rounds  Rounds   `json:"rounds"`
 }
 
@@ -50,6 +72,10 @@ type Team struct {
 	Name   string `json:"name"`
 	Region string `json:"region"`
 	Seed   int    `json:"seed"`
+}
+
+func (t Team) String() string {
+	return t.Name
 }
 
 type Region struct {
