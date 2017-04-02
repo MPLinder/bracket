@@ -64,7 +64,7 @@ func NewBracket(field Field, picks Picks) Bracket {
 	return constructFromSlice([]Bracket{seed}, regions[2:], picks)
 }
 
-func (b *Bracket) Copy() *Bracket {
+func (b Bracket) Copy() *Bracket {
 	var ret = Bracket{value: b.value}
 	if b.left == nil {
 		return &ret
@@ -74,7 +74,7 @@ func (b *Bracket) Copy() *Bracket {
 	return &ret
 }
 
-func (b *Bracket) Depth() int {
+func (b Bracket) Depth() int {
 	if b.left == nil {
 		return 1
 	} else {
@@ -99,6 +99,10 @@ func (b *Bracket) FillFromPicks(picks Picks) {
 }
 
 func (b *Bracket) AllPossiblePicks() []Picks {
+	if b.value != (Team{}) {
+		return []Picks{}
+	}
+
 	var ret []Picks
 	var picks = make(Picks)
 
@@ -112,6 +116,22 @@ func (b *Bracket) AllPossiblePicks() []Picks {
 // assuming a 64 team field
 func (b *Bracket) Round() int {
 	return b.Depth() - 1
+}
+
+// LastCompleteRound returns the integer value of the last complete round in which a Bracket takes place
+// assuming a 64 team field
+func (b *Bracket) LastCompleteRound() int {
+	if b.value != (Team{}) {
+		return b.Round()
+	}
+
+	var left = b.left.LastCompleteRound()
+	var right = b.right.LastCompleteRound()
+
+	if left > right {
+		return left
+	}
+	return right
 }
 
 func (b *Bracket) Leaves() []Team {

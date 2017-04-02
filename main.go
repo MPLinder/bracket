@@ -19,6 +19,7 @@ func main() {
 
 	var actual Player
 	actual.Bracket = NewBracket(group.Field, group.Actual.Picks)
+	//actual.Bracket.PrettyPrint(os.Stdout, "\t\t\t")
 
 	// TODO: goroutines here
 	for i := range group.Players {
@@ -35,28 +36,38 @@ func main() {
 	}
 
 	var allPossiblePicks = actual.Bracket.AllPossiblePicks()
-	var allPossibleBrackets = make(map[Bracket][]Player)
+	var allPossibleBrackets = []Bracket{}
 
 	var possible Bracket
 	for _, picks := range allPossiblePicks {
 		possible = *actual.Bracket.Copy()
 		possible.FillFromPicks(picks)
-		//allPossibleBrackets[possible] = make(map[string]int)
-		//fmt.Printf("Winners: %v\n", possible.RoundWinners(possible.Round()-1))
-		for _, player := range group.Players {
-			//fmt.Printf("\t%s: %d\n", player.Name, player.Bracket.Points(possible, group.Rounds))
-			allPossibleBrackets[possible] = append(allPossibleBrackets[possible], player)
+		allPossibleBrackets = append(allPossibleBrackets, possible)
+
+		var subPossiblePicks = possible.AllPossiblePicks()
+		var subPossible Bracket
+		for _, subPicks := range subPossiblePicks {
+			subPossible = *possible.Copy()
+			subPossible.FillFromPicks(subPicks)
+			allPossibleBrackets = append(allPossibleBrackets, subPossible)
 		}
 	}
 
-	for bracket, players := range allPossibleBrackets {
-		fmt.Printf("Winners: %v\n", bracket.RecentWinners())
-		sort.Slice(players, func(i, j int) bool {
-			return players[i].Bracket.Points(bracket, group.Rounds) > players[j].Bracket.Points(bracket, group.Rounds)
+	var prefixBase = allPossibleBrackets[0].Round()
+	var prefix string
+	for _, bracket := range allPossibleBrackets {
+		prefix = ""
+		for i := 0; i < bracket.LastCompleteRound()-prefixBase; i++ {
+			prefix += "\t"
+		}
+
+		fmt.Printf("%sWinners: %v\n", prefix, bracket.RecentWinners())
+		sort.Slice(group.Players, func(i, j int) bool {
+			return group.Players[i].Bracket.Points(bracket, group.Rounds) > group.Players[j].Bracket.Points(bracket, group.Rounds)
 		})
 
-		for _, p := range players {
-			fmt.Printf("\t%s: %d\n", p.Name, p.Bracket.Points(bracket, group.Rounds))
+		for _, p := range group.Players {
+			fmt.Printf("%s\t%s: %d\n", prefix, p.Name, p.Bracket.Points(bracket, group.Rounds))
 		}
 	}
 }
