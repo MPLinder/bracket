@@ -44,6 +44,7 @@ func main() {
 		possible.FillFromPicks(picks)
 		allPossibleBrackets = append(allPossibleBrackets, possible)
 
+		// TODO: this only does one more round
 		var subPossiblePicks = possible.AllPossiblePicks()
 		var subPossible Bracket
 		for _, subPicks := range subPossiblePicks {
@@ -53,7 +54,7 @@ func main() {
 		}
 	}
 
-	var prefixBase = allPossibleBrackets[0].Round()
+	var prefixBase = allPossibleBrackets[0].LastCompleteRound()
 	var prefix string
 	for _, bracket := range allPossibleBrackets {
 		prefix = ""

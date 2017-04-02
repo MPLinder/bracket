@@ -128,7 +128,7 @@ func (b *Bracket) LastCompleteRound() int {
 	var left = b.left.LastCompleteRound()
 	var right = b.right.LastCompleteRound()
 
-	if left > right {
+	if left < right {
 		return left
 	}
 	return right
