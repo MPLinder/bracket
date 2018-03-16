@@ -98,7 +98,7 @@ func (b *Bracket) FillFromPicks(picks Picks) {
 	b.value = winner(*b.left, *b.right, picks)
 }
 
-func (b *Bracket) AllPossiblePicks() []Picks {
+func (b *Bracket) AllPossiblePicks(w io.Writer, frequency int) []Picks {
 	if b.value != (Team{}) {
 		return []Picks{}
 	}
@@ -108,7 +108,7 @@ func (b *Bracket) AllPossiblePicks() []Picks {
 
 	ret = append(ret, picks)
 
-	allPossiblePicksHelper(*b, &ret)
+	allPossiblePicksHelper(*b, &ret, w,1, frequency)
 	return ret
 }
 
@@ -178,6 +178,7 @@ func (b *Bracket) Points(actual Bracket, rounds Rounds) int {
 	if b.Round() == 0 {
 		return 0
 	}
+
 	return gamePoints(*b, actual, rounds[b.Round()]) + b.left.Points(*actual.left, rounds) + b.right.Points(*actual.right, rounds)
 }
 
@@ -258,7 +259,11 @@ func winner(left Bracket, right Bracket, picks Picks) Team {
 	return winner
 }
 
-func allPossiblePicksHelper(bracket Bracket, picksSlice *[]Picks) {
+func allPossiblePicksHelper(bracket Bracket, picksSlice *[]Picks, w io.Writer, progress int, progressDisplay int) {
+	progress += 1
+	if progress%progressDisplay == 0 {
+		io.WriteString(w, "-")
+	}
 
 	if bracket.value != (Team{}) {
 		return
@@ -285,8 +290,10 @@ func allPossiblePicksHelper(bracket Bracket, picksSlice *[]Picks) {
 		*picksSlice = append(*picksSlice, newPicksSlice...)
 	}
 
-	allPossiblePicksHelper(*bracket.left, picksSlice)
-	allPossiblePicksHelper(*bracket.right, picksSlice)
+	allPossiblePicksHelper(*bracket.left, picksSlice, w, progress, progressDisplay)
+	allPossiblePicksHelper(*bracket.right, picksSlice, w, progress, progressDisplay)
 
 	return
 }
+
+
