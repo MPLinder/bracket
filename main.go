@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	groupData, err := ioutil.ReadFile("./group_test.json")
+	groupData, err := ioutil.ReadFile("./group.json")
 	if err != nil {
 		fmt.Printf("File error: %v\n", err)
 		os.Exit(1)
