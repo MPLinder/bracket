@@ -112,20 +112,20 @@
         "Kansas": 4,
         "Duke": 3,
         "Michigan St.": 5,
-        "Auburn": 3,
-        "Clemson": 2,
-        "TCU": 2,
+        "Auburn": 2,
+        "Clemson": 3,
+        "TCU": 1,
         "Rhode Island": 1,
         "Seton Hall": 1,
         "NC State": 2,
         "Oklahoma": 2,
-        "Syracuse": 1,
+        "Syracuse": 2,
         "New Mex. St.": 1,
         "Charleston": 1,
         "Bucknell": 1,
         "Iona": 1,
         "Penn": 1,
-        "Xavier": 3,
+        "Xavier": 1,
         "N. Carolina": 4,
         "Michigan": 3,
         "Gonzaga": 5,
@@ -140,7 +140,7 @@
         "UNC-Green.": 1,
         "Montana": 1,
         "Lipscomb": 1,
-        "Texas So.": 1
+        "Texas So.": 3
       }
     },
     {
@@ -216,7 +216,7 @@
   "actual": {
     "name": "Actual",
     "picks": {
-      "CSFullerton": 1, "N. Carolina": 1, "TCU": 1, "SF Austin": 1, "NC State": 1, "Oklahoma": 1, "Miami (Fla.)": 1, "Providence": 1, "Lipscomb": 1, "Villanova": 2, "Arkansas": 1, "Xavier": 1, "Butler": 1, "Penn": 1, "Clemson": 1, "Texas": 1, "UMBC": 1, "Tennessee": 2, "Arizona": 1, "Wright St.": 1, "St. Bona.": 1, "Michigan": 2, "Kansas": 2, "Virginia": 1, "W. Virginia": 1, "Montana": 1, "Davidson": 1, "Georgia St.": 1, "UNC-Green.": 1, "San Diego St": 1, "Houston": 2, "Bucknell": 1, "Kansas St.": 1, "Purdue": 1, "Michigan St.": 1, "Murray St.": 1, "Florida": 2, "Kentucky": 2, "Rhode Island": 2, "New Mex. St.": 1, "Radford": 1, "Syracuse": 1, "Missouri": 1, "Charleston": 1, "Alabama": 2, "Buffalo": 2, "S. Dak. St.": 1, "Creighton": 1, "Duke": 2, "Nevada": 1, "Cincinnati": 1, "Ohio St.": 2, "Texas So.": 1, "Florida St.": 1, "Seton Hall": 2, "Va. Tech": 1, "Auburn": 1, "Iona": 1, "Texas A&M": 1, "Wichita St.": 1, "Gonzaga": 2, "Loyola-Chi.": 2, "Texas Tech": 2, "Marshall": 1
+      "CSFullerton": 1, "N. Carolina": 2, "TCU": 2, "SF Austin": 1, "NC State": 1, "Oklahoma": 1, "Miami (Fla.)": 1, "Providence": 1, "Lipscomb": 1, "Villanova": 2, "Arkansas": 1, "Xavier": 2, "Butler": 2, "Penn": 1, "Clemson": 2, "Texas": 2, "UMBC": 1, "Tennessee": 2, "Arizona": 1, "Wright St.": 1, "St. Bona.": 1, "Michigan": 2, "Kansas": 2, "Virginia": 2, "W. Virginia": 1, "Montana": 1, "Davidson": 1, "Georgia St.": 1, "UNC-Green.": 1, "San Diego St": 1, "Houston": 2, "Bucknell": 1, "Kansas St.": 1, "Purdue": 2, "Michigan St.": 2, "Murray St.": 2, "Florida": 2, "Kentucky": 2, "Rhode Island": 2, "New Mex. St.": 1, "Radford": 1, "Syracuse": 1, "Missouri": 1, "Charleston": 1, "Alabama": 2, "Buffalo": 2, "S. Dak. St.": 1, "Creighton": 2, "Duke": 2, "Nevada": 1, "Cincinnati": 2, "Ohio St.": 2, "Texas So.": 1, "Florida St.": 2, "Seton Hall": 2, "Va. Tech": 1, "Auburn": 2, "Iona": 1, "Texas A&M": 2, "Wichita St.": 2, "Gonzaga": 2, "Loyola-Chi.": 2, "Texas Tech": 2, "Marshall": 1
     }
   },
   "rounds": {

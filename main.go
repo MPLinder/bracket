@@ -121,8 +121,9 @@ func main() {
 		for _, ppr := range p.PlayerPossibleRounds {
 			chance[ppr.Rank] += 1
 		}
+
 		for rank, occurrences := range chance {
-			fmt.Printf("\t\t%d%% chance of being ranked %d (%d of the %d scenarios)\n", (occurrences / len(p.PlayerPossibleRounds)) * 100, rank, occurrences, len(p.PlayerPossibleRounds))
+			fmt.Printf("\t\t%v%% chance of being ranked %d (%d of the %d scenarios)\n", (float64(occurrences) / float64(len(p.PlayerPossibleRounds))) * 100, rank, occurrences, len(p.PlayerPossibleRounds))
 		}
 	}
 }
