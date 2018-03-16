@@ -42,6 +42,7 @@ func main() {
 	default:
 		allPossiblePicks = actual.Bracket.AllPossiblePicks(os.Stdout, 2)
 	}
+
 	var allPossibleBrackets = []Bracket{}
 
 	var possible Bracket
@@ -73,7 +74,7 @@ func main() {
 		fmt.Printf("\t %d. %s: %d\n", i+1, player.Name, player.Bracket.Points(actual.Bracket, group.Rounds))
 	}
 
-	var prefixBase = allPossibleBrackets[0].LastCompleteRound()
+	var prefixBase = actual.Bracket.LastCompleteRound()
 	var prefix string
 
 	for _, bracket := range allPossibleBrackets {
@@ -95,6 +96,7 @@ func main() {
 			playerPossibleRound = PlayerPossibleRound{Rank: i + 1, Points: points}
 			p.PlayerPossibleRounds = append(p.PlayerPossibleRounds, playerPossibleRound)
 		}
+
 	}
 
 	sort.Slice(group.Players, func(i, j int) bool {

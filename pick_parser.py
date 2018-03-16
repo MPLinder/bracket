@@ -13,7 +13,7 @@ def parse_picks(picks_string):
 
     all_teams = {}
     for team in picks['game_and_pick_list']['teams']:
-        all_teams[team['ceng_abbr']] =HTMLParser.HTMLParser().unescape(team['name'])
+        all_teams[team['ceng_abbr']] = HTMLParser.HTMLParser().unescape(team['name'])
 
     # A count of the CBS data will only net the number of games a player has picked a team to win
     # but the go script expects the number of games a team played, so we'll need to add 1 to every team.
@@ -24,5 +24,23 @@ def parse_picks(picks_string):
         for round in region['rounds']:
             for game in round['games']:
                 games_per_team.append(all_teams[game['user_pick']['pick']])
+
+    return json.dumps(Counter(games_per_team))
+
+def parse_actual(picks_string):
+    picks = json.loads(picks_string)
+
+    all_teams = {}
+    for team in picks['game_and_pick_list']['teams']:
+        all_teams[team['ceng_abbr']] = HTMLParser.HTMLParser().unescape(team['name'])
+
+    # Because I'm counting all games played here, I don't need to seed the return value the way parse_picks does
+
+    games_per_team = all_teams.values()
+    for region in picks['game_and_pick_list']['regions']:
+        for round in region['rounds']:
+            for game in round['games']:
+                if game['winner_abbr'] != '':
+                    games_per_team.append(all_teams[game['winner_abbr']])
 
     return json.dumps(Counter(games_per_team))
