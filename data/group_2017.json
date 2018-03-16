@@ -1,0 +1,1009 @@
+{
+  "field": {
+    "regions": [
+      {
+        "name": "Midwest",
+        "seed": 1,
+        "teams": [
+          {
+            "name": "Kansas",
+            "region": "Midwest",
+            "seed": 1
+          },
+          {
+            "name": "Louisville",
+            "region": "Midwest",
+            "seed": 2
+          },
+          {
+            "name": "Oregon",
+            "region": "Midwest",
+            "seed": 3
+          },
+          {
+            "name": "Purdue",
+            "region": "Midwest",
+            "seed": 4
+          },
+          {
+            "name": "Iowa State",
+            "region": "Midwest",
+            "seed": 5
+          },
+          {
+            "name": "Creighton",
+            "region": "Midwest",
+            "seed": 6
+          },
+          {
+            "name": "Michigan",
+            "region": "Midwest",
+            "seed": 7
+          },
+          {
+            "name": "Miami",
+            "region": "Midwest",
+            "seed": 8
+          },
+          {
+            "name": "Michigan State",
+            "region": "Midwest",
+            "seed": 9
+          },
+          {
+            "name": "Oklahoma State",
+            "region": "Midwest",
+            "seed": 10
+          },
+          {
+            "name": "Rhode Island",
+            "region": "Midwest",
+            "seed": 11
+          },
+          {
+            "name": "Nevada",
+            "region": "Midwest",
+            "seed": 12
+          },
+          {
+            "name": "Vermont",
+            "region": "Midwest",
+            "seed": 13
+          },
+          {
+            "name": "Iona",
+            "region": "Midwest",
+            "seed": 14
+          },
+          {
+            "name": "Jacksonville St.",
+            "region": "Midwest",
+            "seed": 15
+          },
+          {
+            "name": "UC Davis",
+            "region": "Midwest",
+            "seed": 16
+          }
+        ]
+      },
+      {
+        "name": "South",
+        "seed": 4,
+        "teams": [
+          {
+            "name": "North Carolina",
+            "region": "South",
+            "seed": 1
+          },
+          {
+            "name": "Kentucky",
+            "region": "South",
+            "seed": 2
+          },
+          {
+            "name": "UCLA",
+            "region": "South",
+            "seed": 3
+          },
+          {
+            "name": "Butler",
+            "region": "South",
+            "seed": 4
+          },
+          {
+            "name": "Minnesota",
+            "region": "South",
+            "seed": 5
+          },
+          {
+            "name": "Cincinnati",
+            "region": "South",
+            "seed": 6
+          },
+          {
+            "name": "Dayton",
+            "region": "South",
+            "seed": 7
+          },
+          {
+            "name": "Arkansas",
+            "region": "South",
+            "seed": 8
+          },
+          {
+            "name": "Seton Hall",
+            "region": "South",
+            "seed": 9
+          },
+          {
+            "name": "Wichita State",
+            "region": "South",
+            "seed": 10
+          },
+          {
+            "name": "Kansas State",
+            "region": "South",
+            "seed": 11
+          },
+          {
+            "name": "Middle Tennessee",
+            "region": "South",
+            "seed": 12
+          },
+          {
+            "name": "Winthrop",
+            "region": "South",
+            "seed": 13
+          },
+          {
+            "name": "Kent State",
+            "region": "South",
+            "seed": 14
+          },
+          {
+            "name": "Northern Kentucky",
+            "region": "South",
+            "seed": 15
+          },
+          {
+            "name": "Texas Southern",
+            "region": "South",
+            "seed": 16
+          }
+        ]
+      },
+      {
+        "name": "East",
+        "seed": 2,
+        "teams": [
+          {
+            "name": "Villanova",
+            "region": "East",
+            "seed": 1
+          },
+          {
+            "name": "Duke",
+            "region": "East",
+            "seed": 2
+          },
+          {
+            "name": "Baylor",
+            "region": "East",
+            "seed": 3
+          },
+          {
+            "name": "Florida",
+            "region": "East",
+            "seed": 4
+          },
+          {
+            "name": "Virginia",
+            "region": "East",
+            "seed": 5
+          },
+          {
+            "name": "SMU",
+            "region": "East",
+            "seed": 6
+          },
+          {
+            "name": "South Carolina",
+            "region": "East",
+            "seed": 7
+          },
+          {
+            "name": "Wisconsin",
+            "region": "East",
+            "seed": 8
+          },
+          {
+            "name": "Virginia Tech",
+            "region": "East",
+            "seed": 9
+          },
+          {
+            "name": "Marquette",
+            "region": "East",
+            "seed": 10
+          },
+          {
+            "name": "USC",
+            "region": "East",
+            "seed": 11
+          },
+          {
+            "name": "UNCW",
+            "region": "East",
+            "seed": 12
+          },
+          {
+            "name": "East Tenn St.",
+            "region": "East",
+            "seed": 13
+          },
+          {
+            "name": "New Mexico State",
+            "region": "East",
+            "seed": 14
+          },
+          {
+            "name": "Troy",
+            "region": "East",
+            "seed": 15
+          },
+          {
+            "name": "Mt. St. Mary's",
+            "region": "East",
+            "seed": 16
+          }
+        ]
+      },
+      {
+        "name": "West",
+        "seed": 3,
+        "teams": [
+          {
+            "name": "Gonzaga",
+            "region": "West",
+            "seed": 1
+          },
+          {
+            "name": "Arizona",
+            "region": "West",
+            "seed": 2
+          },
+          {
+            "name": "Florida State",
+            "region": "West",
+            "seed": 3
+          },
+          {
+            "name": "West Virginia",
+            "region": "West",
+            "seed": 4
+          },
+          {
+            "name": "Notre Dame",
+            "region": "West",
+            "seed": 5
+          },
+          {
+            "name": "Maryland",
+            "region": "West",
+            "seed": 6
+          },
+          {
+            "name": "St. Marys",
+            "region": "West",
+            "seed": 7
+          },
+          {
+            "name": "Northwestern",
+            "region": "West",
+            "seed": 8
+          },
+          {
+            "name": "Vanderbilt",
+            "region": "West",
+            "seed": 9
+          },
+          {
+            "name": "VCU",
+            "region": "West",
+            "seed": 10
+          },
+          {
+            "name": "Xavier",
+            "region": "West",
+            "seed": 11
+          },
+          {
+            "name": "Princeton",
+            "region": "West",
+            "seed": 12
+          },
+          {
+            "name": "Bucknell",
+            "region": "West",
+            "seed": 13
+          },
+          {
+            "name": "FGCU",
+            "region": "West",
+            "seed": 14
+          },
+          {
+            "name": "North Dakota",
+            "region": "West",
+            "seed": 15
+          },
+          {
+            "name": "South Dakota State",
+            "region": "West",
+            "seed": 16
+          }
+        ]
+      }
+    ]
+  },
+  "players": [
+    {
+      "name": "Linder",
+      "picks": {
+        "Villanova": 5,
+        "Duke": 3,
+        "Baylor": 2,
+        "Florida": 2,
+        "Virginia": 3,
+        "SMU": 4,
+        "South Carolina": 1,
+        "Wisconsin": 2,
+        "Virginia Tech": 1,
+        "Marquette": 2,
+        "USC": 1,
+        "UNCW": 1,
+        "East Tenn St.": 1,
+        "New Mexico State": 1,
+        "Troy": 1,
+        "Mt. St. Mary's": 1,
+        "Gonzaga": 7,
+        "South Dakota State": 1,
+        "Northwestern": 1,
+        "Vanderbilt": 2,
+        "Notre Dame": 1,
+        "Princeton": 2,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 2,
+        "VCU": 1,
+        "Arizona": 4,
+        "North Dakota": 1,
+        "Kansas": 3,
+        "UC Davis": 1,
+        "Miami": 2,
+        "Michigan State": 1,
+        "Iowa State": 4,
+        "Nevada": 1,
+        "Purdue": 2,
+        "Vermont": 1,
+        "Creighton": 2,
+        "Rhode Island": 1,
+        "Oregon": 6,
+        "Iona": 1,
+        "Michigan": 2,
+        "Oklahoma State": 1,
+        "Louisville": 3,
+        "Jacksonville St.": 1,
+        "North Carolina": 4,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 1,
+        "Middle Tennessee": 3,
+        "Butler": 2,
+        "Winthrop": 1,
+        "Cincinnati": 2,
+        "Kansas State": 1,
+        "UCLA": 3,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 5,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Dana",
+      "picks": {
+        "Villanova": 5,
+        "Duke": 4,
+        "Baylor": 2,
+        "Florida": 3,
+        "Virginia": 2,
+        "SMU": 3,
+        "South Carolina": 1,
+        "Wisconsin": 2,
+        "Virginia Tech": 1,
+        "Marquette": 2,
+        "USC": 1,
+        "UNCW": 1,
+        "East Tenn St.": 1,
+        "New Mexico State": 1,
+        "Troy": 1,
+        "Mt. St. Mary's": 1,
+        "Gonzaga": 6,
+        "South Dakota State": 1,
+        "Northwestern": 2,
+        "Vanderbilt": 1,
+        "Notre Dame": 2,
+        "Princeton": 1,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 4,
+        "VCU": 1,
+        "Arizona": 2,
+        "North Dakota": 1,
+        "Kansas": 4,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 3,
+        "Nevada": 1,
+        "Purdue": 2,
+        "Vermont": 1,
+        "Creighton": 1,
+        "Rhode Island": 2,
+        "Oregon": 3,
+        "Iona": 1,
+        "Michigan": 1,
+        "Oklahoma State": 2,
+        "Louisville": 5,
+        "Jacksonville St.": 1,
+        "North Carolina": 7,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 1,
+        "Middle Tennessee": 2,
+        "Butler": 3,
+        "Winthrop": 1,
+        "Cincinnati": 1,
+        "Kansas State": 2,
+        "UCLA": 3,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 4,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Albert",
+      "picks": {
+        "Villanova": 6,
+        "Duke": 3,
+        "Baylor": 4,
+        "Florida": 3,
+        "Virginia": 2,
+        "SMU": 2,
+        "South Carolina": 2,
+        "Wisconsin": 2,
+        "Virginia Tech": 1,
+        "Marquette": 1,
+        "USC": 1,
+        "UNCW": 1,
+        "East Tenn St.": 1,
+        "New Mexico State": 1,
+        "Troy": 1,
+        "Mt. St. Mary's": 1,
+        "Gonzaga": 4,
+        "South Dakota State": 1,
+        "Northwestern": 2,
+        "Vanderbilt": 1,
+        "Notre Dame": 2,
+        "Princeton": 1,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 2,
+        "VCU": 1,
+        "Arizona": 5,
+        "North Dakota": 1,
+        "Kansas": 7,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 2,
+        "Nevada": 1,
+        "Purdue": 3,
+        "Vermont": 1,
+        "Creighton": 1,
+        "Rhode Island": 2,
+        "Oregon": 4,
+        "Iona": 1,
+        "Michigan": 2,
+        "Oklahoma State": 1,
+        "Louisville": 3,
+        "Jacksonville St.": 1,
+        "North Carolina": 5,
+        "Texas Southern": 1,
+        "Arkansas": 2,
+        "Seton Hall": 1,
+        "Minnesota": 3,
+        "Middle Tennessee": 1,
+        "Butler": 2,
+        "Winthrop": 1,
+        "Cincinnati": 2,
+        "Kansas State": 1,
+        "UCLA": 4,
+        "Kent State": 1,
+        "Dayton": 2,
+        "Wichita State": 1,
+        "Kentucky": 3,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Henry",
+      "picks": {
+        "Villanova": 3,
+        "Duke": 6,
+        "Baylor": 3,
+        "Florida": 4,
+        "Virginia": 2,
+        "SMU":2,
+        "South Carolina": 2,
+        "Wisconsin": 1,
+        "Virginia Tech": 2,
+        "Marquette": 1,
+        "USC": 1,
+        "UNCW": 1,
+        "East Tenn St.": 1,
+        "New Mexico State": 1,
+        "Troy": 1,
+        "Mt. St. Mary's": 1,
+        "Gonzaga": 5,
+        "South Dakota State": 1,
+        "Northwestern": 1,
+        "Vanderbilt": 2,
+        "Notre Dame": 2,
+        "Princeton": 1,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 1,
+        "VCU": 2,
+        "Arizona": 4,
+        "North Dakota": 1,
+        "Kansas": 5,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 3,
+        "Nevada": 1,
+        "Purdue": 2,
+        "Vermont": 1,
+        "Creighton": 1,
+        "Rhode Island": 2,
+        "Oregon": 4,
+        "Iona": 1,
+        "Michigan": 2,
+        "Oklahoma State": 1,
+        "Louisville": 3,
+        "Jacksonville St.": 1,
+        "North Carolina": 7,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 3,
+        "Middle Tennessee": 1,
+        "Butler": 2,
+        "Winthrop": 1,
+        "Cincinnati": 4,
+        "Kansas State": 1,
+        "UCLA": 2,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 3,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Brittney",
+      "picks": {
+        "Villanova": 3,
+        "Mt. St. Mary's": 1,
+        "Wisconsin": 1,
+        "Virginia Tech": 2,
+        "Virginia": 2,
+        "UNCW": 1,
+        "Florida": 4,
+        "East Tenn St.": 1,
+        "SMU": 2,
+        "USC": 1,
+        "Baylor": 3,
+        "New Mexico State": 1,
+        "South Carolina": 2,
+        "Marquette": 1,
+        "Duke": 6,
+        "Troy": 1,
+        "Gonzaga": 4,
+        "South Dakota State": 1,
+        "Northwestern": 1,
+        "Vanderbilt": 2,
+        "Notre Dame": 3,
+        "Princeton": 1,
+        "West Virginia": 2,
+        "Bucknell": 1,
+        "Maryland": 2,
+        "Xavier": 1,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 2,
+        "VCU": 1,
+        "Arizona": 5,
+        "North Dakota": 1,
+        "Kansas": 5,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 3,
+        "Nevada": 1,
+        "Purdue": 2,
+        "Vermont": 1,
+        "Creighton": 2,
+        "Rhode Island": 1,
+        "Oregon": 4,
+        "Iona": 1,
+        "Michigan": 3,
+        "Oklahoma State": 1,
+        "Louisville": 2,
+        "Jacksonville St.": 1,
+        "North Carolina": 7,
+        "Texas Southern": 1,
+        "Arkansas": 2,
+        "Seton Hall": 1,
+        "Minnesota": 2,
+        "Middle Tennessee": 1,
+        "Butler": 3,
+        "Winthrop": 1,
+        "Cincinnati": 1,
+        "Kansas State": 2,
+        "UCLA": 3,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 4,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "April",
+      "picks": {
+        "Villanova": 3,
+        "Mt. St. Mary's": 1,
+        "Wisconsin": 2,
+        "Virginia Tech": 1,
+        "Virginia": 3,
+        "UNCW": 1,
+        "Florida": 2,
+        "East Tenn St.": 1,
+        "SMU": 2,
+        "USC": 1,
+        "Baylor": 3,
+        "New Mexico State": 1,
+        "South Carolina": 1,
+        "Marquette": 2,
+        "Duke": 5,
+        "Troy": 1,
+        "Gonzaga": 7,
+        "South Dakota State": 1,
+        "Northwestern": 2,
+        "Vanderbilt": 1,
+        "Notre Dame": 2,
+        "Princeton": 1,
+        "West Virginia": 2,
+        "Bucknell": 1,
+        "Maryland": 2,
+        "Xavier": 1,
+        "Florida State": 4,
+        "FGCU": 1,
+        "St. Marys": 2,
+        "VCU": 1,
+        "Arizona": 3,
+        "North Dakota": 1,
+        "Kansas": 6,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 3,
+        "Nevada": 1,
+        "Purdue": 2,
+        "Vermont": 1,
+        "Creighton": 1,
+        "Rhode Island": 2,
+        "Oregon": 4,
+        "Iona": 1,
+        "Michigan": 1,
+        "Oklahoma State": 2,
+        "Louisville": 3,
+        "Jacksonville St.": 1,
+        "North Carolina": 5,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 2,
+        "Middle Tennessee": 1,
+        "Butler": 3,
+        "Winthrop": 1,
+        "Cincinnati": 2,
+        "Kansas State": 1,
+        "UCLA": 4,
+        "Kent State": 1,
+        "Dayton": 2,
+        "Wichita State": 1,
+        "Kentucky": 3,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Kristen",
+      "picks": {
+        "Villanova": 7,
+        "Mt. St. Mary's": 1,
+        "Wisconsin": 1,
+        "Virginia Tech": 2,
+        "Virginia": 3,
+        "UNCW": 1,
+        "Florida": 2,
+        "East Tenn St.": 1,
+        "SMU": 2,
+        "USC": 1,
+        "Baylor": 3,
+        "New Mexico State": 1,
+        "South Carolina": 1,
+        "Marquette": 2,
+        "Duke": 4,
+        "Troy": 1,
+        "Gonzaga": 5,
+        "South Dakota State": 1,
+        "Northwestern": 1,
+        "Vanderbilt": 2,
+        "Notre Dame": 2,
+        "Princeton": 1,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 2,
+        "VCU": 1,
+        "Arizona": 4,
+        "North Dakota": 1,
+        "Kansas": 5,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 3,
+        "Nevada": 1,
+        "Purdue": 1,
+        "Vermont": 2,
+        "Creighton": 2,
+        "Rhode Island": 1,
+        "Oregon": 3,
+        "Iona": 1,
+        "Michigan": 2,
+        "Oklahoma State": 1,
+        "Louisville": 4,
+        "Jacksonville St.": 1,
+        "North Carolina": 4,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 1,
+        "Middle Tennessee": 2,
+        "Butler": 3,
+        "Winthrop": 1,
+        "Cincinnati": 2,
+        "Kansas State": 1,
+        "UCLA": 3,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 6,
+        "Northern Kentucky": 1
+      }
+    },
+    {
+      "name": "Bill",
+      "picks": {
+        "Villanova": 3,
+        "Mt. St. Mary's": 1,
+        "Wisconsin": 2,
+        "Virginia Tech": 1,
+        "Virginia": 2,
+        "UNCW": 1,
+        "Florida": 4,
+        "East Tenn St.": 1,
+        "SMU": 3,
+        "USC": 1,
+        "Baylor": 2,
+        "New Mexico State": 1,
+        "South Carolina": 1,
+        "Marquette": 2,
+        "Duke": 7,
+        "Troy": 1,
+        "Gonzaga": 4,
+        "South Dakota State": 1,
+        "Northwestern": 1,
+        "Vanderbilt": 2,
+        "Notre Dame": 1,
+        "Princeton": 2,
+        "West Virginia": 3,
+        "Bucknell": 1,
+        "Maryland": 1,
+        "Xavier": 2,
+        "Florida State": 3,
+        "FGCU": 1,
+        "St. Marys": 1,
+        "VCU": 2,
+        "Arizona": 5,
+        "North Dakota": 1,
+        "Kansas": 6,
+        "UC Davis": 1,
+        "Miami": 1,
+        "Michigan State": 2,
+        "Iowa State": 1,
+        "Nevada": 2,
+        "Purdue": 3,
+        "Vermont": 1,
+        "Creighton": 1,
+        "Rhode Island": 2,
+        "Oregon": 3,
+        "Iona": 1,
+        "Michigan": 1,
+        "Oklahoma State": 2,
+        "Louisville": 4,
+        "Jacksonville St.": 1,
+        "North Carolina": 5,
+        "Texas Southern": 1,
+        "Arkansas": 1,
+        "Seton Hall": 2,
+        "Minnesota": 1,
+        "Middle Tennessee": 3,
+        "Butler": 2,
+        "Winthrop": 1,
+        "Cincinnati": 1,
+        "Kansas State": 2,
+        "UCLA": 4,
+        "Kent State": 1,
+        "Dayton": 1,
+        "Wichita State": 2,
+        "Kentucky": 3,
+        "Northern Kentucky": 1
+      }
+    }
+  ],
+  "actual": {
+    "name": "Actual",
+    "picks": {
+      "Villanova": 2,
+      "Mt. St. Mary's": 1,
+      "Wisconsin": 3,
+      "Virginia Tech": 1,
+      "Virginia": 2,
+      "UNCW": 1,
+      "Florida": 7,
+      "East Tenn St.": 1,
+      "SMU": 1,
+      "USC": 2,
+      "Baylor": 3,
+      "New Mexico State": 1,
+      "South Carolina": 7,
+      "Marquette": 1,
+      "Duke": 2,
+      "Troy": 1,
+      "Gonzaga": 7,
+      "South Dakota State": 1,
+      "Northwestern": 2,
+      "Vanderbilt": 1,
+      "Notre Dame": 2,
+      "Princeton": 1,
+      "West Virginia": 3,
+      "Bucknell": 1,
+      "Maryland": 1,
+      "Xavier": 7,
+      "Florida State": 2,
+      "FGCU": 1,
+      "St. Marys": 2,
+      "VCU": 1,
+      "Arizona": 3,
+      "North Dakota": 1,
+      "Kansas": 7,
+      "UC Davis": 1,
+      "Miami": 1,
+      "Michigan State": 2,
+      "Iowa State": 2,
+      "Nevada": 1,
+      "Purdue": 3,
+      "Vermont": 1,
+      "Creighton": 1,
+      "Rhode Island": 2,
+      "Oregon": 7,
+      "Iona": 1,
+      "Michigan": 3,
+      "Oklahoma State": 1,
+      "Louisville": 2,
+      "Jacksonville St.": 1,
+      "North Carolina": 7,
+      "Texas Southern": 1,
+      "Arkansas": 2,
+      "Seton Hall": 1,
+      "Minnesota": 1,
+      "Middle Tennessee": 2,
+      "Butler": 3,
+      "Winthrop": 1,
+      "Cincinnati": 2,
+      "Kansas State": 1,
+      "UCLA": 3,
+      "Kent State": 1,
+      "Dayton": 1,
+      "Wichita State": 2,
+      "Kentucky": 7,
+      "Northern Kentucky": 1
+    }
+  },
+  "rounds": {
+      "1": {
+        "name": "Round of 64",
+        "points": 4,
+        "add_seed": true
+    },
+      "2": {
+      "name": "Round of 32",
+      "points": 8,
+      "add_seed": true
+    },
+      "3":
+    {
+      "name": "Sweet Sixteen",
+      "points": 16,
+      "add_seed": true
+    },
+      "4":
+    {
+      "name": "Elite 8",
+      "points": 32,
+      "add_seed": false
+    },
+      "5":
+    {
+      "name": "Final Four",
+      "points": 50,
+      "add_seed": false
+    },
+      "6":
+    {
+      "name": "Finals",
+      "points": 70,
+      "add_seed": false
+    }
+  }
+}
