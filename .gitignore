@@ -3,3 +3,4 @@ main
 group.json
 
 .idea
+*.pyc

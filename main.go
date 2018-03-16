@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	groupData, err := ioutil.ReadFile("./group.json")
+	groupData, err := ioutil.ReadFile("./group_test.json")
 	if err != nil {
 		fmt.Printf("File error: %v\n", err)
 		os.Exit(1)
@@ -40,7 +40,7 @@ func main() {
 		fmt.Printf("It's way to early to do this. Chill for a bit.\n")
 		return
 	default:
-		allPossiblePicks = actual.Bracket.AllPossiblePicks(os.Stdout, 10)
+		allPossiblePicks = actual.Bracket.AllPossiblePicks(os.Stdout, 2)
 	}
 	var allPossibleBrackets = []Bracket{}
 
