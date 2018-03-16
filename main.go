@@ -19,6 +19,7 @@ func main() {
 	err = json.Unmarshal(groupData, &group)
 	if err != nil {
 		fmt.Println("Unable to unmarshal group data: %v\n", err)
+		os.Exit(1)
 	}
 
 	var actual Player
