@@ -41,7 +41,7 @@ func main() {
 		fmt.Printf("It's way to early to do this. Chill for a bit.\n")
 		return
 	default:
-		allPossiblePicks = actual.Bracket.AllPossiblePicks(os.Stdout, 2)
+		allPossiblePicks = actual.Bracket.AllPossiblePicks(ioutil.Discard, 2)
 	}
 
 	var allPossibleBrackets = []Bracket{}
@@ -106,7 +106,7 @@ func main() {
 
 	for _, p := range group.Players {
 		fmt.Println("\n", p.Name)
-		fmt.Println("\tPicks: ", p.Bracket.RoundWinners(actual.Bracket.LastCompleteRound()+1), "\n")
+		fmt.Printf("\tPicks: %v\n", p.Bracket.RoundWinners(actual.Bracket.LastCompleteRound()+1))
 		sort.Slice(p.PlayerPossibleRounds, func(i, j int) bool {
 			if p.PlayerPossibleRounds[i].Rank == p.PlayerPossibleRounds[j].Rank {
 				return p.PlayerPossibleRounds[i].Points > p.PlayerPossibleRounds[j].Points
