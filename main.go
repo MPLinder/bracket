@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"bytes"
 )
 
 func main() {
@@ -53,7 +54,7 @@ func main() {
 		allPossibleBrackets = append(allPossibleBrackets, possible)
 
 		//// TODO: this only does one more round
-		//var subPossiblePicks = possible.AllPossiblePicks(os.Stdout, 1)
+		//var subPossiblePicks = possible.AllPossiblePicks(os.Stdout, 100)
 		//var subPossible Bracket
 		//for _, subPicks := range subPossiblePicks {
 		//	subPossible = *possible.Copy()
@@ -106,7 +107,7 @@ func main() {
 
 	for _, p := range group.Players {
 		fmt.Println("\n", p.Name)
-		fmt.Printf("\tPicks: %v\n", p.Bracket.RoundWinners(actual.Bracket.LastCompleteRound()+1))
+		fmt.Printf("\tPicks: %v\n", fmt.Sprint(strTeamSlice(p.Bracket.RoundWinners(actual.Bracket.LastCompleteRound()+1))))
 		sort.Slice(p.PlayerPossibleRounds, func(i, j int) bool {
 			if p.PlayerPossibleRounds[i].Rank == p.PlayerPossibleRounds[j].Rank {
 				return p.PlayerPossibleRounds[i].Points > p.PlayerPossibleRounds[j].Points
@@ -191,4 +192,17 @@ type Round struct {
 	Name    string `json:"name"`
 	Points  int    `json:"points"`
 	AddSeed bool   `json:"add_seed"`
+}
+
+func strTeamSlice(teams []Team) string {
+	var b bytes.Buffer
+	for i, t := range teams {
+		if i != len(teams)-1 {
+			fmt.Fprintf(&b, "%s, ", t)
+		} else {
+			fmt.Fprintf(&b, "%s", t)
+
+		}
+	}
+	return b.String()
 }

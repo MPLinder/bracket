@@ -1,7 +1,8 @@
-import HTMLParser
 import json
 
 from collections import Counter
+from html.parser import HTMLParser
+
 
 # For this to work you have to grab the json from the CBS players bracket page and then feed it to parse_bracket. The
 # data is contained in a variabled called bootstrapBracketsData.
@@ -16,13 +17,13 @@ def parse_picks(bracket):
 
     all_teams = {}
     for team in bracket['game_and_pick_list']['teams']:
-        all_teams[team['ceng_abbr']] = HTMLParser.HTMLParser().unescape(team['name'])
+        all_teams[team['ceng_abbr']] = HTMLParser().unescape(team['name'])
 
     # A count of the CBS data will only net the number of games a player has picked a team to win
     # but the go script expects the number of games a team played, so we'll need to add 1 to every team.
     # We achieve this by starting the list out with one entry for every team.
 
-    games_per_team = all_teams.values()
+    games_per_team = list(all_teams.values())
     for region in bracket['game_and_pick_list']['regions']:
         for round in region['rounds']:
             for game in round['games']:
@@ -38,13 +39,13 @@ def parse_actual(bracket):
 
     all_teams = {}
     for team in bracket['game_and_pick_list']['teams']:
-        all_teams[team['ceng_abbr']] = HTMLParser.HTMLParser().unescape(team['name'])
+        all_teams[team['ceng_abbr']] = HTMLParser().unescape(team['name'])
 
     # A count of the CBS data will only net the number of games a player has picked a team to win
     # but the go script expects the number of games a team played, so we'll need to add 1 to every team.
     # We achieve this by starting the list out with one entry for every team.
 
-    games_per_team = all_teams.values()
+    games_per_team = list(all_teams.values())
     for region in bracket['game_and_pick_list']['regions']:
         for round in region['rounds']:
             for game in round['games']:
@@ -76,7 +77,7 @@ def parse_regions(bracket):
         output_region['teams'] = []
         for team in input_teams:
             if team['region_id'] == region['id']:
-                team = {'name': HTMLParser.HTMLParser().unescape(team['name']), 'seed': int(team['seed']), 'region': region['name']}
+                team = {'name': HTMLParser().unescape(team['name']), 'seed': int(team['seed']), 'region': region['name']}
                 output_region['teams'].append(team)
 
         output_regions.append(output_region)
